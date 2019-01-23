@@ -19,7 +19,7 @@ before_script:
 
 script:
   - echo ' -----------------  BUILD PART 1 ----------------- '
-  - echo 'docker bulid...' && docker build -f flask_mysql_posgre_infra/Dockerfile . -t flask_mysql_posgre_infra_env 
+  - echo 'docker bulid...' && docker-compose up -f flask_mysql_posgre_infra/Dockerfile . -t flask_mysql_posgre_infra_env 
 
 
 after_script:  
