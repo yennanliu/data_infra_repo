@@ -1,0 +1,35 @@
+
+# Travis Build Multiple Docker Images from a Single Repo
+# https://stackoverflow.com/questions/39422135/travis-build-multiple-docker-images-from-a-single-repo
+
+sudo: required
+
+matrix:
+      
+services:
+  - docker
+
+env:
+
+before_install:
+
+install:
+
+before_script: 
+
+script:
+  - echo ' -----------------  BUILD PART 1 ----------------- '
+  - echo 'docker bulid...' && docker build -f flask_mysql_posgre_infra/Dockerfile . -t flask_mysql_posgre_infra_env 
+
+
+after_script:  
+
+after_success:
+
+after_failure:
+
+before_deploy:
+
+deploy:
+
+after_deploy:
