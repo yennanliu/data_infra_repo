@@ -1,9 +1,9 @@
 #!/bin/sh
 
+# https://hub.docker.com/_/postgres
+# STEP 1) start a postgres instance
+docker run --name some-postgres -e POSTGRES_PASSWORD=password -d postgres
 
-# STEP 1) Build an image from the Dockerfile and assign it a name.
-docker build -t eg_postgresql .
 
-
-# STEP 2) Run the PostgreSQL server container (in the foreground)
-docker run --rm -P --name pg_test eg_postgresql
+# STEP 2) connect to it via via psql
+docker run -it --rm --link some-postgres:postgres postgres psql -h postgres -U postgres
