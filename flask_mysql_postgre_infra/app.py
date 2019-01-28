@@ -8,12 +8,7 @@ import
 
 app = Flask(__name__)
 
-
-@app.route("/")
-def hello():
-    return 'hello-world'
-
-@app.route("/mysql_test", methods=['POST','GET'])
+#  OP -----------------------------------------
 def get_mysql_test():
     config = {
         'user': 'root',
@@ -28,7 +23,17 @@ def get_mysql_test():
     cursor.close()
     connection.close()
     return results
+#  OP -----------------------------------------
 
+
+
+@app.route("/")
+def hello():
+    return 'hello-world'
+
+@app.route("/mysql_test", methods=['POST','GET'])
+def get_mysql_test():
+    return json.dumps({'favorite_colors': favorite_colors()})
 
 @app.route("/postgre_test", methods=['POST','GET'])
 def get_postgre_test():
