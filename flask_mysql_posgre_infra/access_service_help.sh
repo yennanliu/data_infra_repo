@@ -20,3 +20,6 @@ COMMENT1
 
 # access local docker mysql 
 docker exec -it mysql /usr/bin/mysql -u root -p
+
+# access local postgresql 
+docker exec  -it postgres psql -h postgres -U postgres
