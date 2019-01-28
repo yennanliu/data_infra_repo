@@ -3,6 +3,14 @@ version: '3.1'
 
 services:
 
+  app:
+    build: .
+    links:
+      - postgres
+      - mysql
+    ports:
+      - "5000:5000"
+      
   postgres:
     image: postgres
     container_name: postgres
