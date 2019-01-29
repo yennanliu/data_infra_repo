@@ -7,7 +7,7 @@
 
 
 
-# list images 
+#  0) list images 
 docker images 
 
 <<COMMENT1
@@ -18,8 +18,9 @@ postgres                    latest              87817605d897        5 days ago  
 postgres                    10.1-alpine         e6c5e6a76255        12 months ago       38.2MB
 COMMENT1
 
-# access local docker mysql 
+# 1) access local docker mysql 
+# host='mysql', user='root', password='password', db='knights',
 docker exec -it mysql /usr/bin/mysql -u root -p
 
-# access local postgresql 
+# 2) access local postgresql 
 docker exec  -it postgres psql -h postgres -U postgres
