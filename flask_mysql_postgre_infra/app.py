@@ -3,27 +3,28 @@ import os
 import random
 import json
 import pymysql
- 
+import pymysql.cursors
+
 
 
 app = Flask(__name__)
 
 #  OP -----------------------------------------
 def get_mysql_data():
-    config = {
-        'user': 'root',
-        'password': 'password',
-        'host': 'mysql',
-        'port': '3306',
-        'database': 'knights'}
-    connection = pymysql.connect(**config)
-    cursor = connection.cursor()
-    results = cursor.execute('SELECT * FROM favorite_colors').fetchall()
-    print (results)
+    connection = pymysql.connect(host='mysql',
+                             user='root',
+                             password='password',
+                             db='knights',
+                             cursorclass=pymysql.cursors.DictCursor)
+    with connection.cursor() as cursor:
+        sql = """SELECT * FROM favorite_colors"""
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        print (result)
     #results = [{name: color} for (name, color) in cursor]
     cursor.close()
     connection.close()
-    return results
+    return results[0]
 #  OP -----------------------------------------
 
 
