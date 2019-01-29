@@ -24,7 +24,7 @@ def get_mysql_data():
     #results = [{name: color} for (name, color) in cursor]
     cursor.close()
     connection.close()
-    return results[0]
+    return result[0]
 #  OP -----------------------------------------
 
 
