@@ -33,7 +33,7 @@ def hello():
 
 @app.route("/mysql_test", methods=['POST','GET'])
 def get_mysql_test():
-    return json.dumps({'favorite_colors': favorite_colors()})
+    return json.dumps({'favorite_colors': get_mysql_test()})
 
 @app.route("/postgre_test", methods=['POST','GET'])
 def get_postgre_test():
