@@ -9,7 +9,7 @@ import pymysql
 app = Flask(__name__)
 
 #  OP -----------------------------------------
-def get_mysql_test():
+def get_mysql_data():
     config = {
         'user': 'root',
         'password': 'password',
@@ -31,9 +31,9 @@ def get_mysql_test():
 def hello():
     return 'hello-world'
 
-@app.route("/mysql_test", methods=['POST','GET'])
+@app.route("/mysql_test")
 def get_mysql_test():
-    return json.dumps({'favorite_colors': get_mysql_test()})
+    return json.dumps({'favorite_colors': get_mysql_data()})
 
 @app.route("/postgre_test", methods=['POST','GET'])
 def get_postgre_test():
