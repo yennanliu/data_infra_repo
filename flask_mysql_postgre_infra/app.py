@@ -13,13 +13,14 @@ def get_mysql_data():
     config = {
         'user': 'root',
         'password': 'password',
-        'host': 'db',
+        'host': 'mysql',
         'port': '3306',
         'database': 'knights'}
     connection = pymysql.connect(**config)
     cursor = connection.cursor()
-    cursor.execute('SELECT * FROM favorite_colors')
-    results = [{name: color} for (name, color) in cursor]
+    results = cursor.execute('SELECT * FROM favorite_colors').fetchall()
+    print (results)
+    #results = [{name: color} for (name, color) in cursor]
     cursor.close()
     connection.close()
     return results
