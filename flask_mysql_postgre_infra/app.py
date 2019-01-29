@@ -5,8 +5,6 @@ import json
 import pymysql
 import pymysql.cursors
 
-
-
 app = Flask(__name__)
 
 #  OP -----------------------------------------
@@ -21,12 +19,10 @@ def get_mysql_data():
         cursor.execute(sql)
         result = cursor.fetchall()
         print (result)
-    #results = [{name: color} for (name, color) in cursor]
     cursor.close()
     connection.close()
     return result[0]
 #  OP -----------------------------------------
-
 
 
 @app.route("/")
@@ -43,6 +39,3 @@ def get_postgre_test():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
-
-
-
