@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, make_response, g
 import os
 import random
 import json
-import mysql
+import pymysql
  
 
 
@@ -16,7 +16,7 @@ def get_mysql_test():
         'host': 'db',
         'port': '3306',
         'database': 'knights'}
-    connection = mysql.connector.connect(**config)
+    connection = pymysql.connect(**config)
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM favorite_colors')
     results = [{name: color} for (name, color) in cursor]
