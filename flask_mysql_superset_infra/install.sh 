@@ -1,0 +1,6 @@
+
+#!/bin/sh
+
+# https://github.com/amancevice/superset
+# https://github.com/tylerFowler/docker-superset
+# https://github.com/amancevice/superset/blob/master/Dockerfile
