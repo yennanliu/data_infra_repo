@@ -9,32 +9,6 @@ import psycopg2
 app = Flask(__name__)
 
 #  OP -----------------------------------------
-def get_mysql_data():
-    connection = pymysql.connect(host='mysql',
-                             user='root',
-                             password='password',
-                             db='knights',
-                             cursorclass=pymysql.cursors.DictCursor)
-    with connection.cursor() as cursor:
-        sql = """SELECT * FROM favorite_colors"""
-        cursor.execute(sql)
-        result = cursor.fetchall()
-        print (result)
-    cursor.close()
-    connection.close()
-    return result[0]
-
-def get_postgre_data():
-    conn = psycopg2.connect("dbname='knights' user='postgres' host='postgres' password='password'")
-    with conn.cursor()  as cursor:
-        sql = """SELECT * FROM favorite_colors"""
-        cursor.execute(sql)
-        result = cursor.fetchall()
-        print (result)
-    cursor.close()
-    conn.close()
-    return result[0]
-
 def get_db_data(dbtype):
     if dbtype == 'mysql':
         connection = pymysql.connect(host='mysql',
@@ -55,7 +29,6 @@ def get_db_data(dbtype):
     cursor.close()
     connection.close()
     return result[0]
-
 #  OP -----------------------------------------
 
 
