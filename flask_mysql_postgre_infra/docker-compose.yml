@@ -17,6 +17,8 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: password
+    volumes:
+      - ./db_postgre:/docker-entrypoint-initdb.d/:ro
 
   mysql:
     image: mysql:5.7
