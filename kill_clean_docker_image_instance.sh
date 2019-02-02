@@ -21,22 +21,17 @@ function kill_xbot_airflow_docker_image_instance(){
 	echo 'STOP --------------------------'
 	for container in ${xbot_docker_container}; 
 	do
-		echo "kill docker container $container"; 
-		#docker stop $(image)
+		echo "kill docker container $container" &&  docker stop $container; 
 	done; 
-
+	
 	echo 'REMOVE --------------------------'
 	for image in ${xbot_docker_image}; 
 	do 
-		#docker rm $(docker ps -aq)
-		#docker rmi $(docker images -q)
-		#docker rm $(docker ps -a -q)
-		#docker rmi $(docker images -q -a)
-		echo "kill docker image $image"; 
+		echo "docker rm image $image" && docker rm  $image; 
+		echo "docker rmi image $image" && docker rmi  $image ; 
 	done; 
 
 }
-
 
 kill_xbot_airflow_docker_image_instance
 
