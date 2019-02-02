@@ -41,14 +41,14 @@ function kill_xbot_airflow_docker_image_instance(){
 	echo 'STOP --------------------------'
 	for container in ${xbot_docker_container}; 
 	do
-		echo "kill docker container $container" &&  docker stop $container; 
+	echo "kill docker container $container" &&  docker stop $container; 
 	done; 
 
 	echo 'REMOVE --------------------------'
 	for image_id in ${xbot_docker_image_id}; 
 	do 
-		echo "docker rm image_id $image_id" && docker rm  $image_id; 
-		echo "docker rmi image_id $image_id" && docker rmi  $image_id ; 
+	echo "docker rm image_id $image_id" && docker rm  $image_id; 
+	echo "docker rmi image_id $image_id" && docker rmi  $image_id ; 
 	done; 
 }
 
