@@ -12,14 +12,16 @@ function kill_all_docker_image_instance(){
 }
 
 
-function kill_astro_airflow_docker_image_instance(){
+function kill_xbot_airflow_docker_image_instance(){
 
-	all_docker_image=`docker ps --format '{{.Names}}'`
-	xbot_docker_image=`docker ps --format '{{.Names}}' | grep "xbot"`
+	all_docker_container=`docker ps --format '{{.Names}}'`
+	xbot_docker_container=`docker ps --format '{{.Names}}' | grep "xbot"`
+
 	echo 'STOP --------------------------'
-	for image in ${xbot_docker_image}; 
+	for container in ${xbot_docker_container}; 
 	do
-		echo "kill docker image $image"; 
+		echo "kill docker image $container"; 
+		#docker stop $(image)
 	done; 
 
 	echo 'REMOVE --------------------------'
@@ -35,4 +37,4 @@ function kill_astro_airflow_docker_image_instance(){
 }
 
 
-kill_astro_airflow_docker_image_instance
+kill_xbot_airflow_docker_image_instance
