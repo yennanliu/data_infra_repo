@@ -1,7 +1,6 @@
 #!/bin/sh
 
 function kill_all_docker_image_instance(){
-
 	echo 'STOP --------------------------'
 	docker stop $(docker ps -aq)
 	echo 'REMOVE --------------------------'
@@ -30,12 +29,10 @@ function kill_VA_docker_image_instance(){
 		echo "docker rm image_id $image_id" && docker rm  $image_id; 
 		echo "docker rmi image_id $image_id" && docker rmi  $image_id ; 
 	done; 
-
 }
 
 
 function kill_xbot_airflow_docker_image_instance(){
-
 	all_docker_container=`docker ps --format '{{.Names}}'`
 	xbot_docker_container=`docker ps --format '{{.Names}}' | grep "xbot"`
 	xbot_docker_image=`docker images | grep -E 'postgres|x-bot/airflow|astronomerinc/ap-airflow' | awk '{print $1}'`
@@ -53,7 +50,6 @@ function kill_xbot_airflow_docker_image_instance(){
 		echo "docker rm image_id $image_id" && docker rm  $image_id; 
 		echo "docker rmi image_id $image_id" && docker rmi  $image_id ; 
 	done; 
-
 }
 
 
