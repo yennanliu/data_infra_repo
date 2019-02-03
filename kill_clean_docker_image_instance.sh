@@ -51,5 +51,4 @@ kill_xbot_airflow_docker_image_instance
 
 
 # kill VA dockers 
-#for $va_docker_image_name in ${VA_DOCKER_IMAGES_NAME} ; do
-#    kill_VA_docker_image_instance  "${va_docker_image_name}"
+#for $va_docker_image_name in ${VA_DOCKER_IMAGES_NAME} ; do kill_VA_docker_image_instance  "${va_docker_image_name}"; done 
