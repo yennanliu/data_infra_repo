@@ -12,7 +12,7 @@ services:
     worker:
         build:
             context: .
-            dockerfile: dockerfile
+            dockerfile: Dockerfile
         volumes:
             - .:/app
         links:
