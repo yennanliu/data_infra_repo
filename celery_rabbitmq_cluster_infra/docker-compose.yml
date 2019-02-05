@@ -7,7 +7,7 @@ services:
             - RABBITMQ_DEFAULT_USER=admin
             - RABBITMQ_DEFAULT_PASS=mypass
         ports:
-            - "5672:5672"
+            - "5673:5672"
 
     worker:
         build:
@@ -19,3 +19,8 @@ services:
             - rabbit
         depends_on:
             - rabbit
+    database:
+        hostname: mongo
+        image: mongo:latest
+        ports:
+            - "27018:27017"
