@@ -1,5 +1,6 @@
 
 ## Ref
+- https://github.com/simplesteph/kafka-stack-docker-compose
 - https://docs.docker.com/samples/library/zookeeper/
 - https://github.com/batux/personal_book_library_web_project
 - https://docs.confluent.io/current/installation/docker/docs/installation/single-node-client.html
@@ -20,7 +21,7 @@ docker-compose -f zk-single-kafka-single.yml down
 
 - dev 
 
-#### full stack 
+### full stack 
 
 ```bash
 export export DOCKER_HOST_IP=127.0.0.1
