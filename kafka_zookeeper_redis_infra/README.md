@@ -7,7 +7,7 @@
 
 ## Quick start 
 
-#### single Zookeeper / single Kafka
+### single Zookeeper / single Kafka
 
 ```bash 
 export export DOCKER_HOST_IP=127.0.0.1
