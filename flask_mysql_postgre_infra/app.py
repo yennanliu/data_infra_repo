@@ -9,6 +9,12 @@ import psycopg2
 app = Flask(__name__)
 
 #  OP -----------------------------------------
+
+def datetime_converter(o):
+    # https://code-maven.com/serialize-datetime-object-as-json-in-python
+    if isinstance(o, datetime):
+        return o.__str__()
+
 def get_db_data(dbtype):
     if dbtype == 'mysql':
         connection = pymysql.connect(host='mysql',
@@ -38,11 +44,11 @@ def hello():
 
 @app.route("/mysql_test")
 def get_mysql_test():
-    return json.dumps({'favorite_colors': get_db_data('mysql')})
+    return json.dumps(get_db_data('mysql'),default=datetime_converter)
 
 @app.route("/postgre_test", methods=['POST','GET'])
 def get_postgre_test():
-    return json.dumps({'favorite_colors': get_db_data('postgres')}) 
+    return json.dumps(get_db_data('postgres'),default=datetime_converter) 
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
