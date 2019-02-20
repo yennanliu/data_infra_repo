@@ -22,7 +22,7 @@ def get_db_data(dbtype):
         print ('not support DB type')
         pass 
     with connection.cursor() as cursor:
-        sql = """SELECT * FROM favorite_colors"""
+        sql = """SELECT * FROM transactions"""
         cursor.execute(sql)
         result = cursor.fetchall()
         print (result)
