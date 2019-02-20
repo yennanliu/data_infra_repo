@@ -35,7 +35,7 @@ def get_db_data(dbtype):
         print (result)
     cursor.close()
     connection.close()
-    return result[0]
+    return result
 #  OP -----------------------------------------
 
 
