@@ -3,9 +3,10 @@
 
 > A POC project build a distributed Task system with celery, redis, and flower
 
-- celery : worker, broker
+- celery : task worker, broker
 - redis  : backend (DB), save the log 
 - flower : monitor the job status (via WEB UI)
+- flask  : web server help trigger celery tasks
 
 ### Quick start 
 
@@ -26,6 +27,11 @@ docker-compose -f  docker-compose.yml up
 	- Run a "mul" task :  http://localhost:5001/add/1/2
 	- Run a "web scrape" task :  http://localhost:5001/scrap_task
 
+
+### Development 
+
+- Modify the end point via [api/app.py](https://github.com/yennanliu/data_infra_repo/blob/master/celery_redis_flower_infra/api/app.py) 
+- Modify the task via [celery-queue/tasks.py](https://github.com/yennanliu/data_infra_repo/blob/master/celery_redis_flower_infra/celery-queue/tasks.py) 
 
 ### Modify from 
 
