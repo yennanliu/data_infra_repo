@@ -20,6 +20,7 @@ docker-compose -f  docker-compose.yml up
 ```
 
 - Step 3 : access the services 
+
 	- Check the flower UI : http://localhost:5555/
 	- Run a "add" task : http://localhost:5001/add/1/2
 	- Run a "mul" task :  http://localhost:5001/add/1/2
@@ -34,6 +35,5 @@ docker-compose -f  docker-compose.yml up
 - Celery 
 	- https://myapollo.com.tw/tags/celery/
 - Other works 
-	- https://medium.com/@tonywangcn/how-to-build-docker-cluster-with-celery-and-rabbitmq-in-10-minutes-13fc74d21730
 	- https://github.com/tonywangcn/docker-cluster-with-celery-and-rabbitmq
-	- https://github.com/mattkohl/docker-flask-celery-redis
+	- https://medium.com/@tonywangcn/how-to-build-docker-cluster-with-celery-and-rabbitmq-in-10-minutes-13fc74d21730
