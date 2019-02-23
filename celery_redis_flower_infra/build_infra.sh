@@ -15,6 +15,9 @@ docker-compose up -d --scale worker=5 --no-recreate
 # to shut down
 docker-compose down
 
+# access redis CLI 
+dokcker ps -a 
+docker exec -it <redis_image_id> redis-cli
 
 # access the services 
 #Check the flower UI : http://localhost:5555/
