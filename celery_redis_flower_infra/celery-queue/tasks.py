@@ -1,6 +1,6 @@
 import os
 import time
-import urllib
+import urllib.request as request
 from bs4 import BeautifulSoup
 from celery import Celery
 
@@ -24,8 +24,9 @@ def mul(x: int, y: int) -> int:
 @celery.task(name='tasks.scrap_task')
 def scrape():
 	url = 'https://github.com/apache/spark'
-	opener=urllib.request.build_opener()
+	opener=request.build_opener()
 	opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 	page = opener.open(url)
 	soup = BeautifulSoup(page)
 	print (soup.text)
+	return soup.text
