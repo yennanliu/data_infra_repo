@@ -12,7 +12,7 @@
 
 - Step 1 : clone the repo
 ```bash
-git clone https://github.com/yennanliu/data_infra_repo
+cd ~ && git clone https://github.com/yennanliu/data_infra_repo
 ```
 - Step 2 : build the docker images 
 ```bash
@@ -33,11 +33,9 @@ docker-compose -f  docker-compose.yml up
 - Modify the end point via [api/app.py](https://github.com/yennanliu/data_infra_repo/blob/master/celery_redis_flower_infra/api/app.py) 
 - Modify the task via [celery-queue/tasks.py](https://github.com/yennanliu/data_infra_repo/blob/master/celery_redis_flower_infra/celery-queue/tasks.py) 
 
-### Modify from 
-
-- https://github.com/mattkohl/docker-flask-celery-redis
-
 ### Ref
+- Modify from 
+	- https://github.com/mattkohl/docker-flask-celery-redis
 - Celery 
 	- https://myapollo.com.tw/tags/celery/
 - Other works 
