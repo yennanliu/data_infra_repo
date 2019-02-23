@@ -1,11 +1,10 @@
-
 #!/bin/sh
-
 
 #################################################################
 # SCRIPT HELP BUILD INFRA LOCAL 
 #################################################################
 
+# build the infra 
 cd ~ && cd data_infra_repo/celery_redis_flower_infra
 docker-compose -f  docker-compose.yml up 
 
