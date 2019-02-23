@@ -12,19 +12,18 @@
 - Step 1 : clone the repo
 ```bash
 git clone https://github.com/yennanliu/data_infra_repo
-cd ~ && cd data_infra_repo/celery_redis_flower_infra
 ```
 - Step 2 : build the docker images 
 ```bash
+cd ~ && cd data_infra_repo/celery_redis_flower_infra
 docker-compose -f  docker-compose.yml up 
 ```
 
 - Step 3 : access the services 
-
-- Check the flower UI : http://localhost:5555/
-- Run a "add" task : http://localhost:5001/add/1/2
-- Run a "mul" task :  http://localhost:5001/add/1/2
-- Run a "web scrape" task :  http://localhost:5001/scrap_task
+	- Check the flower UI : http://localhost:5555/
+	- Run a "add" task : http://localhost:5001/add/1/2
+	- Run a "mul" task :  http://localhost:5001/add/1/2
+	- Run a "web scrape" task :  http://localhost:5001/scrap_task
 
 
 ### Modify from 
