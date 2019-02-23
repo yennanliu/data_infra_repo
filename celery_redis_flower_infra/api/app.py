@@ -12,6 +12,17 @@ def add(param1: int, param2: int) -> str:
     response = f"<a href='{url_for('check_task', task_id=task.id, external=True)}'>check status of {task.id} </a>"
     return response
 
+@app.route('/mul/<int:param1>/<int:param2>')
+def mul(param1: int, param2: int) -> str:
+    task = celery.send_task('tasks.add', args=[param1, param2], kwargs={})
+    response = f"<a href='{url_for('check_task', task_id=task.id, external=True)}'>check status of {task.id} </a>"
+    return response
+
+@app.route('/scrap_task')
+def run_scrap():
+    task = celery.send_task('tasks.scrap_task',kwargs={})
+    response = f"<a href='{url_for('check_task', task_id=task.id, external=True)}'>check status of {task.id} </a>"
+    return response
 
 @app.route('/check/<string:task_id>')
 def check_task(task_id: str) -> str:
