@@ -1,6 +1,5 @@
-#celery==4.0.2
-#celery>=4.2.0rc4
 celery==4.2.1
 requests
 pymongo==3.4.0
 redis
+python3-bs4
