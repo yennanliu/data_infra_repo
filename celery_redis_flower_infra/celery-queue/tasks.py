@@ -1,5 +1,7 @@
 import os
 import time
+import urllib
+from bs4 import BeautifulSoup
 from celery import Celery
 
 
