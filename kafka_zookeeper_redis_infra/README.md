@@ -25,6 +25,7 @@ docker-compose -f zk-single-kafka-single.yml up
 docker-compose -f zk-single-kafka-single.yml down
 
 ```
+- The services will be available: 
 	- Zookeeper  :  `$DOCKER_HOST_IP:2181`
 	- Kafka :  `$DOCKER_HOST_IP:9092`
 
@@ -38,6 +39,8 @@ docker-compose -f full-stack.yml up
 docker-compose -f full-stack.yml down
 
 ```
+
+- The services will be available: 
 	- Single Zookeeper: `$DOCKER_HOST_IP:2181`
 	- Single Kafka: `$DOCKER_HOST_IP:9092`
 	- Kafka Schema Registry: `$DOCKER_HOST_IP:8081`
