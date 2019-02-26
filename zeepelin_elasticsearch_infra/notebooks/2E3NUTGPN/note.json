@@ -1,0 +1,123 @@
+{
+  "paragraphs": [
+    {
+      "text": "%sh\nrm /root/bank.zip\nrm -rf /root/data\ncd ~\nwget http://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank.zip\nmkdir data\nunzip bank.zip -d data\n#rm bank.zip",
+      "user": "anonymous",
+      "dateUpdated": "Feb 26, 2019 9:17:27 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "rm: cannot remove ‘/root/bank.zip’: No such file or directory\n--2019-02-26 09:17:30--  http://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank.zip\nResolving archive.ics.uci.edu (archive.ics.uci.edu)... 128.195.10.249\nConnecting to archive.ics.uci.edu (archive.ics.uci.edu)|128.195.10.249|:80... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 579043 (565K) [application/zip]\nSaving to: ‘bank.zip’\n\n     0K .......... .......... .......... .......... ..........  8%  162K 3s\n    50K .......... .......... .......... .......... .......... 17%  187K 3s\n   100K .......... .......... .......... .......... .......... 26% 1.64M 2s\n   150K .......... .......... .......... .......... .......... 35%  951K 1s\n   200K .......... .......... .......... .......... .......... 44%  500K 1s\n   250K .......... .......... .......... .......... .......... 53% 1.12M 1s\n   300K .......... .......... .......... .......... .......... 61%  839K 1s\n   350K .......... .......... .......... .......... .......... 70%  462K 0s\n   400K .......... .......... .......... .......... .......... 79%  889K 0s\n   450K .......... .......... .......... .......... .......... 88% 5.07M 0s\n   500K .......... .......... .......... .......... .......... 97%  747K 0s\n   550K .......... .....                                      100%  150M\u003d1.1s\n\n2019-02-26 09:17:31 (513 KB/s) - ‘bank.zip’ saved [579043/579043]\n\nArchive:  bank.zip\n  inflating: data/bank-full.csv      \n  inflating: data/bank-names.txt     \n  inflating: data/bank.csv           \n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1551172626989_260042213",
+      "id": "20190226-091706_608972418",
+      "dateCreated": "Feb 26, 2019 9:17:06 AM",
+      "dateStarted": "Feb 26, 2019 9:17:27 AM",
+      "dateFinished": "Feb 26, 2019 9:17:32 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val sqlContext \u003d new org.apache.spark.sql.SQLContext(sc)\n\nval bankText \u003d sc.textFile(s\"/root/data/bank-full.csv\")\n\ncase class Bank(age:Integer, job:String, marital : String, education : String, balance : Integer)\n\n// split each line, filter out header (starts with \"age\"), and map it into Bank case class\n\nval bank \u003d bankText.map(s\u003d\u003es.split(\";\")).filter(s\u003d\u003es(0)!\u003d\"\\\"age\\\"\").map(\n    s\u003d\u003eBank(s(0).toInt, \n            s(1).replaceAll(\"\\\"\", \"\"),\n            s(2).replaceAll(\"\\\"\", \"\"),\n            s(3).replaceAll(\"\\\"\", \"\"),\n            s(5).replaceAll(\"\\\"\", \"\").toInt\n        )\n)\n\n// convert to DataFrame and create temporal table\nbank.toDF().registerTempTable(\"bank\")",
+      "user": "anonymous",
+      "dateUpdated": "Feb 26, 2019 9:17:50 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1551172647020_-965985610",
+      "id": "20190226-091727_1211992877",
+      "dateCreated": "Feb 26, 2019 9:17:27 AM",
+      "dateStarted": "Feb 26, 2019 9:17:50 AM",
+      "status": "RUNNING",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect age, count(1) value\nfrom bank\nwhere age\u003c30\ngroup by age\norder by age",
+      "user": "anonymous",
+      "dateUpdated": "Feb 26, 2019 9:18:14 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1551172670309_1579943835",
+      "id": "20190226-091750_1615166979",
+      "dateCreated": "Feb 26, 2019 9:17:50 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "Feb 26, 2019 9:18:14 AM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1551172694842_744684621",
+      "id": "20190226-091814_1780878752",
+      "dateCreated": "Feb 26, 2019 9:18:14 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Untitled Note 1",
+  "id": "2E3NUTGPN",
+  "angularObjects": {
+    "2E3P8EFPC:shared_process": [],
+    "2E5VWMFRG:shared_process": [],
+    "2E4H1DW6Q:shared_process": [],
+    "2E514923M:shared_process": [],
+    "2E46QUP3N:shared_process": [],
+    "2E6S7FKXU:shared_process": [],
+    "2E573KPZC:shared_process": [],
+    "2E5V71WR4:shared_process": [],
+    "2E3R13A7S:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
