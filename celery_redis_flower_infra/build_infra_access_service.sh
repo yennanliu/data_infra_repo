@@ -18,6 +18,11 @@ docker-compose down
 dokcker ps -a 
 docker exec -it <redis_image_id> redis-cli
 
+# access mongo 
+dokcker ps -a 
+docker exec -it <mongo_image_id> mongo 
+
+
 # access the services 
 #Check the flower UI : http://localhost:5555/
 # Run a "add" task : http://localhost:5001/add/1/2
