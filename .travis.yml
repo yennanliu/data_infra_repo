@@ -19,7 +19,9 @@ before_script:
 
 script:
   - echo ' -----------------  BUILD PART 1 ----------------- '
-  - echo 'docker bulid...' && cd flask_mysql_postgre_infra && docker-compose up -d && docker-compose stop
+  #- echo 'docker bulid...' && cd flask_mysql_postgre_infra && docker-compose up -d && docker-compose stop
+  - bash ./build.sh
+  if: (branch = master)
 
 
 after_script:  
