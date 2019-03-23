@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e2753cdd-7819-4065-a739-fcdd07c8c3ef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../zeepelin_elasticsearch_infra/notebooks/2E3NUTGPN/note.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../zeepelin_elasticsearch_infra/notebooks/2E3NUTGPN/note.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,10 +17,13 @@
     <session id="1069588756">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="5" />
+          <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.51" value="1" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -57,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/yen_data_infra_repo/kafka/app1/ProducerDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="162">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,10 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/yen_data_infra_repo/kafka/app1/ConsumerDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
+            <state relative-caret-position="828">
               <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -116,9 +120,9 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="193" />
-    <option name="y" value="-1057" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="190" />
+    <option name="y" value="-899" />
     <option name="width" value="1321" />
     <option name="height" value="797" />
   </component>
@@ -246,9 +250,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="193" y="-1057" width="1321" height="797" extended-state="1" />
+    <frame x="190" y="-899" width="1321" height="797" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3635653" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.37998435" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -287,20 +292,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/yen_data_infra_repo/kafka/app1/ConsumerDemo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/yen_data_infra_repo/kafka/app1/ProducerDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+        <state relative-caret-position="162">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/yen_data_infra_repo/kafka/app1/ProducerDemo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/yen_data_infra_repo/kafka/app1/ConsumerDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="828">
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
