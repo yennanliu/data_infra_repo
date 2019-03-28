@@ -3,3 +3,4 @@
 *.pw
 *.log 
 *.ipynb
+.creds.yml
