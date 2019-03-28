@@ -1,14 +1,16 @@
-# start with a base image
-FROM ubuntu:14.10
+# start with a base python image 
+FROM ubuntu
 
-# install wget, java, and mini-httpd web server
-#RUN apt-get update && apt-get install -y \
-#wget \
-#default-jre-headless \ 
-#mini-httpd
+# define workin dir and copy all files on it 
+COPY . /app
+WORKDIR /app
+
+# install wget, java, and mini-httpd web server and python packages 
+RUN apt-get update && apt-get install -y wget default-jre-headless mini-httpd python-pip
+RUN pip install -r requirements.txt
 
 # start elasticsearch
 CMD /elasticsearch/bin/elasticsearch -Des.logger.level=OFF & mini-httpd -d /kibana -h `hostname` -r -D -p 8000
 
 # expose ports
-EXPOSE 8000 9200 9200 5601
+EXPOSE 8000 9200 9300 5601
