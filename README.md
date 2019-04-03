@@ -1,4 +1,6 @@
 # data_infra_repo
+[![Build Status](https://travis-ci.org/yennanliu/data_infra_repo.svg?branch=master)](https://travis-ci.org/yennanliu/data_infra_repo)
+
 collection of interesting data infrastructure projects
 
 #### ref 
