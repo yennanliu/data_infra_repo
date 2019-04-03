@@ -1,7 +1,7 @@
 sudo: required
 
 matrix:
-      
+
 services:
   - docker
 
@@ -10,8 +10,6 @@ env:
 script:
   - echo ' -----------------  BUILD DOCKER IMAGES  ----------------- '
   - bash build.sh
-
-before_deploy:
 
 before_deploy:
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin && echo "docker login OK" || echo "docker login failed"
