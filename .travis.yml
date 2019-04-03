@@ -1,7 +1,3 @@
-
-# Travis Build Multiple Docker Images from a Single Repo
-# https://stackoverflow.com/questions/39422135/travis-build-multiple-docker-images-from-a-single-repo
-
 sudo: required
 
 matrix:
@@ -11,27 +7,22 @@ services:
 
 env:
 
-before_install:
-
-install:
-
-before_script: 
-
 script:
-  - echo ' -----------------  BUILD PART 1 ----------------- '
-  #- echo 'docker bulid...' && cd flask_mysql_postgre_infra && docker-compose up -d && docker-compose stop
-  - bash ./build.sh
+  - echo ' -----------------  BUILD DOCKER IMAGES  ----------------- '
+  - bash build.sh
 
-
-
-after_script:  
-
-after_success:
-
-after_failure:
 
 before_deploy:
 
+before_deploy:
+  - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin && echo "docker login OK" || echo "docker login failed"
+
 deploy:
+  provider: script
+  # docker commit and push 
+  #script: (echo '--- DEPLOY PART 1 ---' && docker commit $container_id yennanliu/xbot_env_instance:V1 && docker push yennanliu/xbot_env_instance:V1) 
+  script: echo '----------------- DEPLOY TO DOCKER HUB -----------------'
+  on:
+    branch: master
 
 after_deploy:
