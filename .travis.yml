@@ -8,16 +8,15 @@ services:
 env:
 
 script:
-  - echo ' -----------------  BUILD DOCKER IMAGES  ----------------- '
-  - bash build.sh
+  # docker build 
+  - echo ' -----------------  BUILD DOCKER IMAGES  ----------------- ' && bash build.sh
 
 before_deploy:
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin && echo "docker login OK" || echo "docker login failed"
 
 deploy:
   # docker commit and push 
-  - echo '----------------- DEPLOY TO DOCKER HUB -----------------'
-  - bash deploy_dockerhub.sh
+  script: echo '----------------- DEPLOY TO DOCKER HUB -----------------' && bash deploy_dockerhub.sh
   on:
     branch: master
 
