@@ -1,11 +1,7 @@
 sudo: required
 
-matrix:
-
 services:
   - docker
-
-env:
 
 script:
   - echo ' -----------------  BUILD DOCKER IMAGES  ----------------- '
@@ -17,8 +13,8 @@ before_deploy:
 deploy:
   provider: script
   # docker commit and push 
-  #script: (echo '--- DEPLOY PART 1 ---' && docker commit $container_id yennanliu/xbot_env_instance:V1 && docker push yennanliu/xbot_env_instance:V1) 
-  script: echo '----------------- DEPLOY TO DOCKER HUB -----------------'
+  - echo '----------------- DEPLOY TO DOCKER HUB -----------------'
+  - bash deploy_dockerhub.sh 
   on:
     branch: master
 
