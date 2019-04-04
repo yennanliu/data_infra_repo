@@ -1,11 +1,11 @@
 sudo: required
 
+matrix:
+
 services:
   - docker
 
-branches:
-  only:
-  - master
+env:
 
 script:
   - echo ' -----------------  BUILD DOCKER IMAGES  ----------------- '
@@ -15,7 +15,7 @@ before_deploy:
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin && echo "docker login OK" || echo "docker login failed"
 
 deploy:
-   - echo '----------------- DEPLOY TO DOCKER HUB -----------------'
+  - echo '----------------- DEPLOY TO DOCKER HUB -----------------'
   - bash deploy_dockerhub.sh 
   on:
     branch: master
