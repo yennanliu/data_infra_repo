@@ -16,7 +16,7 @@ before_deploy:
 
 deploy:
   # docker commit and push 
-  script: echo '----------------- DEPLOY TO DOCKER HUB -----------------' && (echo "REGISTRY_PASS $REGISTRY_PASS" && echo "REGISTRY_USER $REGISTRY_USER" && export REGISTRY_PASS=$REGISTRY_PASS && export REGISTRY_USER=$REGISTRY_USER) && bash deploy_dockerhub.sh
+  script: echo '----------------- DEPLOY TO DOCKER HUB -----------------' && (echo "REGISTRY_PASS $REGISTRY_PASS" && echo "REGISTRY_USER $REGISTRY_USER" && export REGISTRY_PASS=$REGISTRY_PASS && export REGISTRY_USER=$REGISTRY_USER) && sh -x deploy_dockerhub.sh
   on:
     branch: master
 
