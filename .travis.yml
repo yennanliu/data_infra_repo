@@ -15,8 +15,9 @@ before_deploy:
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin && echo "docker login OK" || echo "docker login failed"
 
 deploy:
-  - echo '----------------- DEPLOY TO DOCKER HUB -----------------'
-  - bash deploy_dockerhub.sh 
+  provider: script
+  # docker commit and push 
+  script: echo '----------------- DEPLOY TO DOCKER HUB -----------------'
   on:
     branch: master
 
