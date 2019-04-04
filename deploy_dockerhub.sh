@@ -7,6 +7,9 @@
 echo ' ---------------- DEPLOY TO DOCKER HUB ----------------'
 
 declare -a docker_images=("celery_redis_flower_infra/."  "flask_mysql_postgre_infra/.")
+REGISTRY_USER=$(echo ${REGISTRY_USER})
+REGISTRY_PASS=$(echo ${REGISTRY_PASS})
+echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin && echo "docker login OK" || echo "docker login failed"
 
 for docker_image in "${docker_images[@]}"
 	do 
@@ -14,5 +17,4 @@ for docker_image in "${docker_images[@]}"
 		container_id="` docker ps -a | awk 'FNR == 2 {print $1}'`" && echo container_id = $container_id && image_id="` docker ps -a | awk 'FNR == 2 {print $2}'`" && echo image_id = $image_id 
 		# docker deploy 
 		echo 'COMMIT & DEPLOY  : ' $docker_image  && docker commit $container_id yennanliu/$docker_image:V1 && docker push yennanliu/$docker_image:V1
-
 	done 
