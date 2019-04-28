@@ -1,19 +1,13 @@
 sudo: required
-
 matrix:
-
 services:
   - docker
-
 env:
-
 script:
   # docker build 
-  - echo ' -----------------  BUILD DOCKER IMAGES  ----------------- ' && bash build.sh
-  
+  - echo ' -----------------  BUILD DOCKER IMAGES  ----------------- ' && bash build.sh 
 before_deploy:
   #- echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin && echo "docker login OK" || echo "docker login failed"
-
 deploy:
   provider: script
   script: echo "REGISTRY_PASS $REGISTRY_PASS" && echo "REGISTRY_USER $REGISTRY_USER" && export REGISTRY_PASS=$REGISTRY_PASS && export REGISTRY_USER=$REGISTRY_USER && bash deploy_dockerhub.sh 
