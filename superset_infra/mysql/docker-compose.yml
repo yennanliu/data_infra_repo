@@ -15,6 +15,7 @@ services:
       MYSQL_PASSWORD: superset
     volumes:
       - mysql:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d/:ro
   superset:
     image: amancevice/superset
     restart: always
