@@ -11,6 +11,11 @@ bash run_docker_instance.sh
 
 - Access the Superset mysql DB 
 ```bash
+# docker ps -a
+# CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                       PORTS          NAMES
+# 7c277609efb9        amancevice/superset   "gunicorn superset:a…"   About an hour ago   Up About an hour (healthy)   0.0.0.0:8088->8088/tcp   mysql_superset_1
+# eb8ab0b7410c        redis                 "docker-entrypoint.s…"   About an hour ago   Up About an hour             6379/tcp          mysql_redis_1
+# 3964c5b86ea5        mysql:5               "docker-entrypoint.s…"   About an hour ago   Up About an hour             3306/tcp, 33060/tcp      mysql_mysql_1
 docker exec -it mysql_mysql_1 mysql -u superset  -p
 # user : superset password : superset
 # Enter password:
