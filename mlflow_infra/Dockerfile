@@ -5,7 +5,9 @@ LABEL maintainer "N/A"
 
 RUN mkdir /mlflow/
 
-RUN pip install mlflow==0.8.0 && pip freeze list 
+RUN pip install mlflow==0.8.0 && \  
+conda update -n base -c defaults conda && \ 
+pip freeze list  
 
 EXPOSE 5000
 
