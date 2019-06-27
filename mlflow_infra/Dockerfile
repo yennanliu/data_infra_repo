@@ -1,9 +1,10 @@
-FROM continuumio/anaconda3
+#FROM python:3.7.0
+FROM continuumio/miniconda3
 
 LABEL maintainer "N/A"
 
 RUN mkdir /mlflow/
- 
+
 RUN pip install mlflow==0.8.0 && pip freeze list 
 
 EXPOSE 5000
