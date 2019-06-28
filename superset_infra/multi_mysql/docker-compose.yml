@@ -13,6 +13,8 @@ services:
       MYSQL_DATABASE: superset
       MYSQL_USER: superset
       MYSQL_PASSWORD: superset
+    volumes:
+      - mysql:/var/lib/mysql
   mysql2:
     image: mysql:5
     restart: always
@@ -21,6 +23,8 @@ services:
       MYSQL_DATABASE: mysql_user
       MYSQL_USER: mysql_user
       MYSQL_PASSWORD: mysql_user
+    ports:
+      - "3307:3307"
     volumes:
       - mysql:/var/lib/mysql
       - ./db:/docker-entrypoint-initdb.d/:ro
