@@ -1,5 +1,9 @@
 -- create db 1 
 
+USE superset; 
+
+SHOW TABLES; 
+
 CREATE DATABASE transactions_db;
 use transactions_db;
 
