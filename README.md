@@ -6,8 +6,24 @@
 
 * Daas (Data as a service) repo :  [Data infra build](https://github.com/yennanliu/data_infra_repo) -> [ETL build](https://github.com/yennanliu/XJob) -> [DS application demo](https://github.com/yennanliu/analysis)
 
+### File Structure 
+```bash
+# ├── README.md
+# ├── build.sh
+# ├── celery_redis_flower_infra
+# ├── deploy_dockerhub.sh
+# ├── flask_mysql_postgre_infra
+# ├── kafka_zookeeper_redis_infra
+# ├── kill_clean_docker_image_instance.sh
+# ├── mlflow_infra
+# ├── superset_infra
+# ├── travis_build.sh
+# ├── twitter_elasticsearch_infra_java
+# ├── twitter_elasticsearch_infra_py
+# └── zeepelin_elasticsearch_infra
+```
 ### Test 
-[Play with Docker](https://labs.play-with-docker.com/)
+- [Play with Docker](https://labs.play-with-docker.com/)
 
 ### Ref 
 - EG
