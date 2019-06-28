@@ -1,8 +1,8 @@
 -- create db 1 
 
-USE superset; 
+#USE superset; 
 
-SHOW TABLES; 
+#SHOW TABLES; 
 
 CREATE DATABASE transactions_db;
 use transactions_db;
