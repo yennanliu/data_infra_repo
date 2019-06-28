@@ -6,7 +6,7 @@
 
 echo ' ---------------- DEPLOY TO DOCKER HUB ----------------'
 
-declare -a docker_images=("celery_redis_flower_infra/."  "flask_mysql_postgre_infra/.")
+declare -a docker_images=("celery_redis_flower_infra/."  "flask_mysql_postgre_infra/." "mlflow_infra/." "zeepelin_elasticsearch_infra/.")
 #REGISTRY_USER=$(echo ${REGISTRY_USER})
 #REGISTRY_PASS=$(echo ${REGISTRY_PASS})
 echo "$REGISTRY_PASS" | docker login  --username $REGISTRY_USER --password $REGISTRY_PASS && echo "docker login OK" || echo "docker login failed"
