@@ -1,1 +1,1 @@
-web: airflow webserver --port 8088
+web: airflow webserver --port $PORT
