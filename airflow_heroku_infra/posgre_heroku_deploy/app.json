@@ -21,7 +21,7 @@
     },
     "AIRFLOW_FERNET_KEY": {
       "description": "Fernet key should be generated as: python -c \"from cryptography.fernet import Fernet; print Fernet.generate_key()\"",
-      "value": ""
+      "value": "vT62X4_DgOXH0UIt2nwU2W5ty3jd0zGlTtv3eM_W9MM"
     }
   },
   "scripts": {
