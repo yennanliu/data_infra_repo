@@ -18,4 +18,7 @@ $ heroku config:set  -a airflow-heroku AIRFLOW__WEBSERVER__AUTH_BACKEND=airflow.
 ### Ref 
 - Deploy airflow to Heroku
 	- https://medium.com/@damesavram/running-airflow-on-heroku-ed1d28f8013d
+	- https://github.com/leandroloi/heroku-airflow
+
+
 	
