@@ -1,1 +1,3 @@
-apache-airflow[postgres, password]
+psycopg2
+celery[redis]
+apache-airflow[postgres,crypto,password,celery,s3]
