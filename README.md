@@ -5,6 +5,8 @@
 > As `Data infra build` part of the "Daas (Data as a service) repo", this project shows how to build DS/DE environments via Docker from scratch. Will focus on : 1) System design by practical using cases 2) Docker, package, and libraries env setting up 3) Test, staging, and product develop/deploy workflow development (CI/CD style maybe)
 
 * Daas (Data as a service) repo :  [Data infra build](https://github.com/yennanliu/data_infra_repo) -> [ETL build](https://github.com/yennanliu/XJob) -> [DS application demo](https://github.com/yennanliu/analysis)
+* Airflow Heroku demo : [airflow-heroku-dev](https://github.com/yennanliu/airflow-heroku-dev)
+* Mlflow Heroku demo : [mlflow-heroku-dev](https://github.com/yennanliu/mlflow-heroku-dev)
 
 ### File Structure 
 ```bash
