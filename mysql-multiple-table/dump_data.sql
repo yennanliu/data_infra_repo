@@ -1,5 +1,5 @@
 /*
-### table 3 : Trips 
+### table 1 : Trips 
 */
 Create table If Not Exists Trips (Id int, Client_Id int, Driver_Id int, City_Id int, Status ENUM('completed', 'cancelled_by_driver', 'cancelled_by_client'), Request_at varchar(50)); 
 Truncate table Trips;
@@ -15,7 +15,7 @@ insert into Trips (Id, Client_Id, Driver_Id, City_Id, Status, Request_at) values
 insert into Trips (Id, Client_Id, Driver_Id, City_Id, Status, Request_at) values ('10', '4', '13', '12', 'cancelled_by_driver', '2013-10-03'); 
 
 /*
-### table 4 : Users
+### table 2 : Users
 */
 Create table If Not Exists Users (Users_Id int, Banned varchar(50), Role ENUM('client', 'driver', 'partner'));
 Truncate table Users;
