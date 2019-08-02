@@ -9,7 +9,7 @@ ENV MYSQL_DATABASE my_db
 # run commands 
 RUN ls && pwd 
 
-# Add the content of the sql-scripts/ directory to your image
+# Add the content of the sql_script/ directory to your image
 # All scripts in docker-entrypoint-initdb.d/ are automatically
 # executed during container startup
 COPY ./sql_script/ /docker-entrypoint-initdb.d/
