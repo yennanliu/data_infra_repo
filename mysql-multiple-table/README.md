@@ -10,13 +10,13 @@ $ cd ~ && cd data_infra_repo/mysql-multiple-table
 # docker build 
 docker build -t mysql_env .
 
-# start the mysql container
+# start mysql container
 docker run -it -p 3306:3306 --name mysql_env \
 -e MYSQL_ROOT_PASSWORD=supersecret mysql_env
 
 # access mysql
 docker exec -it mysql_env /usr/bin/mysql -u root -p 
-# Enter password: (supersecret)
+# >>>>>> password: supersecret
 
 # Welcome to the MySQL monitor.  Commands end with ; or \g.
 # Your MySQL connection id is 14
