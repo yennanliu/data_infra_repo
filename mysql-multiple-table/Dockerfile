@@ -1,12 +1,15 @@
-FROM mysql:5.7
+FROM mysql
 
 # Set up env var
-ENV HOME /
-WORKDIR $HOME
-COPY . $HOME
+#ENV MYSQL_ROOT_PASSWORD password
+
+# Add a database
+ENV MYSQL_DATABASE my_db
 
 # run commands 
 RUN ls && pwd 
-#ADD init_db.sh init_db.sh
-RUN /bin/bash -c "source init_db.sh"
 
+# Add the content of the sql-scripts/ directory to your image
+# All scripts in docker-entrypoint-initdb.d/ are automatically
+# executed during container startup
+COPY ./sql_script/ /docker-entrypoint-initdb.d/
