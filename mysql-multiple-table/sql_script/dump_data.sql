@@ -27,3 +27,17 @@ insert into Users (Users_Id, Banned, Role) values ('10', 'No', 'driver');
 insert into Users (Users_Id, Banned, Role) values ('11', 'No', 'driver');
 insert into Users (Users_Id, Banned, Role) values ('12', 'No', 'driver');
 insert into Users (Users_Id, Banned, Role) values ('13', 'No', 'driver'); 
+
+/*
+### table 3 : Drivers
+*/
+Create table If Not Exists Drivers (Driver_Id int, Status varchar(50) , Role varchar(50));
+Truncate table Drivers;
+insert into Drivers (Driver_Id, Status, Role) values ('1', 'active', 'driver');
+insert into Drivers (Driver_Id, Status, Role) values ('29', 'blocked', 'driver');
+insert into Drivers (Driver_Id, Status, Role) values ('3', 'blocked', 'driver');
+insert into Drivers (Driver_Id, Status, Role) values ('2', 'active', 'driver');
+insert into Drivers (Driver_Id, Status, Role) values ('5', 'blocked', 'driver');
+insert into Drivers (Driver_Id, Status, Role) values ('13', 'pending', 'driver');
+insert into Drivers (Driver_Id, Status, Role) values ('98', 'active', 'driver');
+insert into Drivers (Driver_Id, Status, Role) values ('7', 'pending', 'driver'); 
