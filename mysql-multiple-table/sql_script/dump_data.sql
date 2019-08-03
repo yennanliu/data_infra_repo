@@ -42,9 +42,9 @@ insert into Drivers (Driver_Id, Status, Role) values ('13', 'pending', 'driver')
 insert into Drivers (Driver_Id, Status, Role) values ('98', 'active', 'driver');
 insert into Drivers (Driver_Id, Status, Role) values ('7', 'pending', 'driver'); 
 
-# Add index and foreign key
-ALTER TABLE Trips ADD INDEX Id (Id);
-ALTER TABLE Users ADD INDEX Users_Id (Users_Id);
-ALTER TABLE Drivers ADD INDEX Driver_Id (Driver_Id);
-ALTER TABLE Trips ADD FOREIGN KEY (Client_Id) REFERENCES Users(Users_Id);
-ALTER TABLE Trips ADD FOREIGN KEY (Client_Id) REFERENCES Drivers(Driver_Id);
+/* Add index and foreign key on tables */
+-- ALTER TABLE Trips ADD INDEX Driver_Id (Driver_Id);
+-- ALTER TABLE Users ADD INDEX Users_Id (Users_Id);
+-- ALTER TABLE Drivers ADD INDEX Driver_Id (Driver_Id);
+-- ALTER TABLE Trips ADD FOREIGN KEY (Client_Id) REFERENCES Users(Users_Id);
+--ALTER TABLE Drivers ADD FOREIGN KEY (Driver_Id) REFERENCES Trips(Driver_Id);
