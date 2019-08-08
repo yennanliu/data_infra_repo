@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#################################################################
+# SCRIPT HELP SET UP MYSQL DOCKER   
+#################################################################
+
 build_docker_mysql(){
 echo 'build docker...'
 docker build -t mysql_env .
@@ -15,3 +19,7 @@ access_docker_mysql(){
 echo 'access mysql...'
 docker exec -it mysql_env /usr/bin/mysql -u root  
 }
+
+build_docker_mysql
+run_mysql_container
+access_docker_mysql
