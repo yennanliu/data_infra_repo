@@ -17,6 +17,7 @@ docker run -it -d -p 3306:3306 --name mysql_env \
 
 access_docker_mysql(){
 echo 'access mysql...'
+sleep 5 # wait till mysql init process finish
 docker exec -it mysql_env /usr/bin/mysql -u root  
 }
 
