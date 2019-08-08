@@ -13,3 +13,6 @@ RUN ls && pwd
 # All scripts in docker-entrypoint-initdb.d/ are automatically
 # executed during container startup
 COPY ./sql_script/ /docker-entrypoint-initdb.d/
+
+# run the script 
+RUN /bin/bash -c "source db_analysis.sh"

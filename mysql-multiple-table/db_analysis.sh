@@ -1,5 +1,4 @@
 #!/bin/bash
-
 mysql -u root <<EOF
 SHOW DATABASES;
 use my_db ; 
