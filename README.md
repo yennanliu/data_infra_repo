@@ -24,6 +24,14 @@
 # ├── twitter_elasticsearch_infra_py
 # └── zeepelin_elasticsearch_infra
 ```
+
+### TODO 
+- DB master-follower
+- DB binary stream ELK
+- Kafka-ELK-DB
+- DB sharding
+
+
 ### Test 
 - [Play with Docker](https://labs.play-with-docker.com/)
 
