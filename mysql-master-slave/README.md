@@ -68,13 +68,15 @@ docker exec mysql_slave sh -c 'mysql -u root -p111 -e "SHOW SLAVE STATUS \G"'
 #### Enter into "mysql_master"
 
 ```
-docker exec -it mysql_master bash
+docker exec -it mysql_master bash 
+mysql -u root -p111
 ```
 
 #### Enter into "mysql_slave"
 
 ```
 docker exec -it mysql_slave bash
+mysql -u root -p111
 ```
 
 ### 3) Ref 
