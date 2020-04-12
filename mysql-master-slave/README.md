@@ -1,5 +1,6 @@
 # Docker MySQL master-slave replication 
-- Modify from https://github.com/vbabak/docker-mysql-master-slave
+- Modify from 
+- https://github.com/vbabak/docker-mysql-master-slave
 ========================
 
 MySQL master-slave replication with using Docker. 
@@ -12,7 +13,9 @@ and after starting setup replication. See commands inside ./build.sh.
 #### Create 2 MySQL containers with master-slave row-based replication 
 
 ```
-./build.sh
+git clone https://github.com/yennanliu/data_infra_repo.git
+cd data_infra_repo//mysql-master-slave
+bash build.sh
 ```
 
 #### Make changes to master
