@@ -1,11 +1,9 @@
 # Docker MySQL master-slave replication 
 - Modify from 
-- https://github.com/vbabak/docker-mysql-master-slave
-========================
+	- https://github.com/vbabak/docker-mysql-master-slave
+- MySQL master-slave replication with using Docker. 
 
-MySQL master-slave replication with using Docker. 
-
-## Run
+## 1) Run
 
 To run this examples you will need to start containers with "docker-compose" 
 and after starting setup replication. See commands inside ./build.sh. 
@@ -21,16 +19,16 @@ bash build.sh
 #### Make changes to master
 
 ```
-docker exec mysql_master sh -c "export MYSQL_PWD=111; mysql -u root mydb -e 'create table code(code int); insert into code values (100), (200)'"
+docker exec mysql_master sh -c "export MYSQL_PWD=111; mysql -u root mydb -e 'CREATE TABLE mytable (name int, age int); insert into mytable values (100, 200), (200, 999)'"
 ```
 
 #### Read changes from slave
 
 ```
-docker exec mysql_slave sh -c "export MYSQL_PWD=111; mysql -u root mydb -e 'select * from code \G'"
+docker exec mysql_slave sh -c "export MYSQL_PWD=111; mysql -u root mydb -e 'select * from mytable;'"
 ```
 
-## Troubleshooting
+## 2) Troubleshooting
 
 #### Check Logs
 
@@ -78,3 +76,9 @@ docker exec -it mysql_master bash
 ```
 docker exec -it mysql_slave bash
 ```
+
+### 3) Ref 
+-  https://github.com/tegansnyder/docker-mysql-master-slave
+- https://tarunlalwani.com/post/mysql-master-slave-using-docker/
+- https://severalnines.com/blog/mysql-docker-multiple-delayed-replication-slaves-disaster-recovery-low-rto
+- https://github.com/vbabak/docker-mysql-master-slave
