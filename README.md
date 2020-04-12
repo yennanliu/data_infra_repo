@@ -26,11 +26,14 @@
 ```
 
 ### TODO 
+- DB sharding (partition)
+- DB replica
 - DB master-follower
+- DB master-master 
+- DB binary stream (kafka) to Bigquery/DW
 - DB binary stream ELK
 - Kafka-ELK-DB
-- DB sharding
-
+- Microservice
 
 ### Test 
 - [Play with Docker](https://labs.play-with-docker.com/)
