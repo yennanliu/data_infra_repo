@@ -19,5 +19,4 @@ WORKDIR /myservice
 ADD . /myservice
 RUN sbt assembly
 COPY start.sh /usr/bin/myservice-run.sh
-chmod +x /usr/bin/myservice-run.sh
-CMD ["/usr/bin/myservice-run.sh"]
+CMD ["/bin/bash", "/usr/bin/myservice-run.sh"]
