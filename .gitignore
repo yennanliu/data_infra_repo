@@ -4,3 +4,5 @@
 *.log 
 *.ipynb
 .creds.yml
+hadoop_yarn_spark/target
+target

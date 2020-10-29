@@ -1,18 +1,22 @@
 package rdd
-import com.typesafe.config.ConfigFactory
+
+//import com.typesafe.config.ConfigFactory
 import org.apache.spark.{SparkConf, SparkContext}
 
 /*
-Simple word count example running local 
+ * Simple word count example running local 
  */
 
 object WordCount extends App{
-  val config = ConfigFactory.load()
+  //val config = ConfigFactory.load()
   // modify file_path from config.getString to hardcode here 
   //val filePath = config.getString("file_path")
-  val filePath = "src/main/resources/sample.txt"
-  val sparkMaster = config.getString("SPARK_MASTER")
-  val sparkAppName = config.getString("SPARK_APPNAME")
+  val filePath = "src/resources/sample.txt"
+
+  // val sparkMaster = config.getString("SPARK_MASTER")
+  // val sparkAppName = config.getString("SPARK_APPNAME")
+  val sparkMaster = "local[*]"
+  val sparkAppName = "word-count"
 
   val conf = new SparkConf().setMaster(sparkMaster).setAppName(sparkAppName)
   val sc = new SparkContext(conf)
