@@ -1,0 +1,132 @@
+version: '2'
+# modify from https://www.jianshu.com/p/3ca4c759d3d8
+services:
+  namenode:
+    image: uhopper/hadoop-namenode:2.8.1
+    # createthe docker networks name
+    hostname: namenode
+    container_name: namenode
+    networks:
+      - hadoop
+    volumes:
+      # plz change the zone name mapping here
+      - /namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=datanode1
+      - CLUSTER_NAME=datanode2
+      - CLUSTER_NAME=datanode3
+      # solve hdfs permission issue, allow all user visit
+      - HDFS_CONF_dfs_permissions=false
+    ports:
+      # port for client RPC endpoint : document system metadata 
+      - 8020:8020
+      # nameNode http service endpoint
+      - 50070:50070
+      # nameNode https service endpoint
+      - 50470:50470
+
+  datanode1:
+    image: uhopper/hadoop-datanode:2.8.1
+    hostname: datanode1
+    container_name: datanode1
+    networks:
+      - hadoop
+    volumes:
+      - /datanode1:/hadoop/dfs/data
+    environment:
+      # same as set up fs.defaultFS in core-site.xml
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      # same as set up dfs.datanode.address hdfs-site.xml
+      - HDFS_CONF_dfs_datanode_address=0.0.0.0:50010
+      # dfs.datanode.ipc.address not use default port since we may need multiples datanode, so need different ports
+      - HDFS_CONF_dfs_datanode_ipc_address=0.0.0.0:50020
+      # dfs.datanode.http.address
+      - HDFS_CONF_dfs_datanode_http_address=0.0.0.0:50075
+    ports:
+      - 50010:50010
+      - 50020:50020
+      - 50075:50075
+
+  datanode2:
+    image: uhopper/hadoop-datanode:2.8.1
+    hostname: datanode2
+    container_name: datanode2
+    networks:
+      - hadoop
+    volumes:
+      - /datanode2:/hadoop/dfs/data
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - HDFS_CONF_dfs_datanode_address=0.0.0.0:50012
+      - HDFS_CONF_dfs_datanode_ipc_address=0.0.0.0:50022
+      - HDFS_CONF_dfs_datanode_http_address=0.0.0.0:50072
+    ports:
+      - 50012:50012
+      - 50022:50022
+      - 50072:50072
+
+  datanode3:
+    image: uhopper/hadoop-datanode:2.8.1
+    hostname: datanode3
+    container_name: datanode3
+    networks:
+      - hadoop
+    volumes:
+      - /datanode3:/hadoop/dfs/data
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - HDFS_CONF_dfs_datanode_address=0.0.0.0:50013
+      - HDFS_CONF_dfs_datanode_ipc_address=0.0.0.0:50023
+      - HDFS_CONF_dfs_datanode_http_address=0.0.0.0:50073
+    ports:
+      - 50013:50013
+      - 50023:50023
+      - 50073:50073
+
+
+  resourcemanager:
+    image: uhopper/hadoop-resourcemanager:2.8.1
+    hostname: resourcemanager
+    container_name: resourcemanager
+    networks:
+      - hadoop
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_log___aggregation___enable=true
+    ports:
+      - 8030:8030
+      - 8031:8031
+      - 8032:8032
+      - 8033:8033
+      - 8088:8088
+
+  nodemanager:
+    image: uhopper/hadoop-nodemanager:2.8.1
+    hostname: nodemanager
+    container_name: nodemanager
+    networks:
+      - hadoop
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+      - YARN_CONF_yarn_log___aggregation___enable=true
+      - YARN_CONF_yarn_nodemanager_remote___app___log___dir=/app-logs
+    ports:
+      - 8040:8040
+      - 8041:8041
+      - 8042:8042
+
+  spark:
+    image: uhopper/hadoop-spark:2.1.2_2.8.1
+    hostname: spark
+    container_name: spark
+    networks:
+      - hadoop
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+    command: tail -f /var/log/dmesg
+
+
+networks:
+  hadoop:
