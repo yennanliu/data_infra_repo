@@ -7,6 +7,14 @@ docker-compose up -d
 # down the service 
 docker-compose down
 ```
+- Name node : localhost:8020
+- Data node : localhost:50070
+- Yarn : localhost:8088
+
+### Install dependency
+```bash
+apt-get install nano vim -y
+```
 
 ### Install python
 ```bash
@@ -14,18 +22,7 @@ apt-get update
 apt-get install python -y
 ```
 
-### Install other dependency
-```bash
-apt-get install nano vim -y
-```
-
-### Install scala
-```bash
-apt-get update
-apt-get install scala -y
-```
-
-### Install sbt
+### Install scala & sbt
 ```bash
 # https://hub.docker.com/r/srdc/scala/dockerfile
 # install Scala
