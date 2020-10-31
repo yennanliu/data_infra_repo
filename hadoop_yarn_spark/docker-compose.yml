@@ -117,7 +117,7 @@ services:
       - 8042:8042
 
   spark:
-    image: spark/. #uhopper/hadoop-spark:2.1.2_2.8.1
+    image: uhopper/hadoop-spark:2.1.2_2.8.1 #spark/. 
     hostname: spark
     container_name: spark
     networks:
