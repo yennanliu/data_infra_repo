@@ -44,3 +44,4 @@ echo "-scala-home /usr/local/scala" ${SBT_HOME}/conf/sbtopts
 ### Ref
 - https://www.jianshu.com/p/3ca4c759d3d8
 - https://hub.docker.com/u/uhopper
+- https://yanwei-liu.medium.com/hadoop-spark%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-%E4%B8%80-%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A-%E5%AE%89%E8%A3%9Dscala-4bd2b5ef7e66
