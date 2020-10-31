@@ -8,23 +8,6 @@ docker-compose up -d
 docker-compose down
 ```
 
-### Install sbt
-```bash
-# run inside spark docker
-# https://stackoverflow.com/questions/13711395/install-sbt-on-ubuntu
-# method 1)
-curl -fSL http://apt.typesafe.com/repo-deb-build-0002.deb
-dpkg -i repo-deb-build-0002.deb
-# https://github.com/yennanliu/utility_shell/blob/master/emr/config_emr.sh
-# https://stackoverflow.com/questions/35529913/how-to-install-sbt-on-ubuntu-debian-with-apt-get/35530489
-curl -L -o sbt.deb http://dl.bintray.com/sbt/debian/sbt-0.13.15.deb
-dpkg -i sbt.deb
-# method 2)
-apt-get update
-apt-get install sbt
-
-```
-
 ### Install python
 ```bash
 apt-get update
@@ -34,6 +17,31 @@ apt-get install python -y
 ### Install other dependency
 ```bash
 apt-get install nano vim -y
+```
+
+### Install scala
+```bash
+apt-get update
+apt-get install scala -y
+```
+
+### Install sbt
+```bash
+# https://hub.docker.com/r/srdc/scala/dockerfile
+# install Scala
+SCALA_VERSION=2.11.7
+curl -sL http://downloads.typesafe.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.tgz | gunzip | tar -x -C /usr/local
+cd /usr/local && ln -s ./scala-$SCALA_VERSION scala
+SCALA_HOME=/usr/local/scala
+PATH=${PATH}:${SCALA_HOME}/bin
+
+# install SBT
+SBT_VERSION=0.13.9
+SBT_HOME=/usr/local/sbt
+PATH=${PATH}:${SBT_HOME}/bin
+curl -sL http://dl.bintray.com/sbt/native-packages/sbt/$SBT_VERSION/sbt-$SBT_VERSION.tgz | gunzip | tar -x -C /usr/local
+cd /usr/local && ln -s ./sbt-$SBT_VERSION sbt
+echo "-scala-home /usr/local/scala" ${SBT_HOME}/conf/sbtopts
 ```
 
 ### Ref
