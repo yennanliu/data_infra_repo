@@ -23,4 +23,4 @@ RUN chmod a+x \
     
 RUN echo "export SPARK_DIST_CLASSPATH=$(hadoop classpath)" >> /opt/spark-$SPARK_VERSION/conf/spark-env.sh
 
-ENTRYPOINT ["/spark-entrypoint.sh"]
+ENTRYPOINT ["hooks/spark-entrypoint.sh"]
