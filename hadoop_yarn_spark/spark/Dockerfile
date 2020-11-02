@@ -13,20 +13,14 @@ RUN set -x \
 WORKDIR $SPARK_HOME
 ENV PATH $SPARK_HOME/bin:$PATH
 
-ADD spark-entrypoint.sh /
-ADD spark-historyserver.sh /
-ADD spark-master.sh /
-ADD spark-slave.sh /
+COPY . $SPARK_HOME
 
 RUN chmod a+x \
-    /spark-entrypoint.sh \
-    /spark-historyserver.sh \
-    /spark-master.sh \
-    /spark-slave.sh
+    hooks/spark-entrypoint.sh \
+    spark-historyserver.sh \
+    spark-master.sh \
+    spark-slave.sh
     
 RUN echo "export SPARK_DIST_CLASSPATH=$(hadoop classpath)" >> /opt/spark-$SPARK_VERSION/conf/spark-env.sh
-
-RUN apt-get install nano vim -y \
-	apt-get install python -y
 
 ENTRYPOINT ["/spark-entrypoint.sh"]
