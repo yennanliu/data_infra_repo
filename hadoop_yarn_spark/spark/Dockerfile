@@ -7,10 +7,8 @@ ENV SPARK_BIN_URL https://www.archive.apache.org/dist/spark/spark-$SPARK_VERSION
 ENV SPARK_HOME=/opt/spark-$SPARK_VERSION
 
 RUN set -x \
-    && curl -sL "$SPARK_BIN_URL" -o /tmp/spark.tar.gz \
-    && tar -xvf /tmp/spark.tar.gz -C /opt \
-    && mv /opt/spark-$SPARK_VERSION-* $SPARK_HOME \
-    && rm -f /tmp/spark.tar.gz
+	&& curl -sL https://archive.apache.org/dist/spark/spark-2.1.2/spark-2.1.2-bin-without-hadoop.tgz | gunzip | tar -x -C /usr/local \
+	&& cp -r /usr/local/spark-${SPARK_VERSION}-bin-without-hadoop $SPARK_HOME
 
 WORKDIR $SPARK_HOME
 ENV PATH $SPARK_HOME/bin:$PATH
