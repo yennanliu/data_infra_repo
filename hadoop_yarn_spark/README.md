@@ -1,3 +1,7 @@
+### Step by steps 
+- [Run all](https://github.com/yennanliu/data_infra_repo/blob/master/hadoop_yarn_spark/QA_run_all.md)
+- [Run spark](https://github.com/yennanliu/data_infra_repo/blob/master/hadoop_yarn_spark/QA_run_spark.md)
+
 ### Quick start
 ```bash
 git clone https://github.com/yennanliu/data_infra_repo.git
