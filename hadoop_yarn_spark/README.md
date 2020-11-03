@@ -42,6 +42,20 @@ cd /usr/local && ln -s ./sbt-$SBT_VERSION sbt
 echo "-scala-home /usr/local/scala" ${SBT_HOME}/conf/sbtopts
 ```
 
+### Run spark jobs
+```bash
+# standalone 
+spark-submit demo.py
+
+# cluster
+export HADOOP_CONF_DIR=/etc/hadoop 
+spark-submit \
+  --master yarn \
+  --deploy-mode cluster \
+  --conf spark.eventLog.dir=hdfs://nodemanager/mode/containerlogs \
+  demo.py
+```
+
 ### Ref
 - Hadoop-spark-yarn docker
 	- https://www.jianshu.com/p/3ca4c759d3d8
