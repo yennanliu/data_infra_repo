@@ -13,6 +13,7 @@ docker-compose down
 
 ### Install dependency
 ```bash
+apt-get update
 apt-get install nano vim -y
 ```
 
@@ -41,7 +42,25 @@ cd /usr/local && ln -s ./sbt-$SBT_VERSION sbt
 echo "-scala-home /usr/local/scala" ${SBT_HOME}/conf/sbtopts
 ```
 
+### Run spark jobs
+```bash
+# standalone 
+spark-submit demo.py
+
+# cluster
+export HADOOP_CONF_DIR=/etc/hadoop 
+spark-submit \
+  --master yarn \
+  --deploy-mode cluster \
+  --conf spark.eventLog.dir=hdfs://nodemanager/mode/containerlogs \
+  demo.py
+```
+
 ### Ref
-- https://www.jianshu.com/p/3ca4c759d3d8
-- https://hub.docker.com/u/uhopper
-- https://yanwei-liu.medium.com/hadoop-spark%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-%E4%B8%80-%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A-%E5%AE%89%E8%A3%9Dscala-4bd2b5ef7e66
+- Hadoop-spark-yarn docker
+	- https://www.jianshu.com/p/3ca4c759d3d8
+	- https://hub.docker.com/u/uhopper
+	- https://github.com/infotechsoft/uhopper-hadoop-docker
+	- https://yanwei-liu.medium.com/hadoop-spark%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-%E4%B8%80-%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A-%E5%AE%89%E8%A3%9Dscala-4bd2b5ef7e66
+- HDFS command ref
+	- https://stackoverflow.com/questions/28241251/hadoop-fs-ls-results-in-no-such-file-or-directory
