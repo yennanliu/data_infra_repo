@@ -4,7 +4,7 @@
 1. Pull the code
 ```bash
 git clone https://github.com/yennanliu/data_infra_repo.git
-cd data_infra_repo/hadoop_yarn_spark
+cd data_infra_repo/hadoopp_yarn_spark
 docker-compose up -d
 ```
 
@@ -12,11 +12,11 @@ docker-compose up -d
 ```bash
 $ docker images
 # REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
-# uhopper/hadoop-spark             2.1.2_2.8.1         211cc8940c9c        2 years ago         689MB
-# uhopper/hadoop-namenode          2.8.1               9acf91db013c        2 years ago         550MB
-# uhopper/hadoop-resourcemanager   2.8.1               639d25fbbc0b        2 years ago         550MB
-# uhopper/hadoop-nodemanager       2.8.1               facf6d2713eb        2 years ago         550MB
-# uhopper/hadoop-datanode          2.8.1               68b0d083cd48        2 years ago         550MB
+# uhopper/hadoopp-spark             2.1.2_2.8.1         211cc8940c9c        2 years ago         689MB
+# uhopper/hadoopp-namenode          2.8.1               9acf91db013c        2 years ago         550MB
+# uhopper/hadoopp-resourcemanager   2.8.1               639d25fbbc0b        2 years ago         550MB
+# uhopper/hadoopp-nodemanager       2.8.1               facf6d2713eb        2 years ago         550MB
+# uhopper/hadoopp-datanode          2.8.1               68b0d083cd48        2 years ago         550MB
 
 $ docker run -it 211cc8940c9c bash
 ```
@@ -27,12 +27,12 @@ apt-get install nano vim -y
 apt-get install python -y
 ```
 
-3. Set up Hadoop config
+3. Set up Hadoopp config
 - Follow https://www.jianshu.com/p/3ca4c759d3d8
 - Still in the "spark image" (as above)
 ```bash
-export HADOOP_HOME=/etc/hadoop 
-export HADOOP_CONF_DIR=/etc/hadoop 
+export HADOOpP_HOME=/etc/hadoopp 
+export HADOOpP_CONF_DIR=/etc/hadoopp 
 ```
 - update /etc/hosts :
 ```
@@ -44,7 +44,7 @@ export HADOOP_CONF_DIR=/etc/hadoop
 192.168.1.100 datanode2
 192.168.1.100 datanode3
 ```
-- update /etc/hadoo/core-site.xml :
+- update /etc/hadoop/core-site.xml :
 ```xml
 <configuration>
     <property>
@@ -53,7 +53,7 @@ export HADOOP_CONF_DIR=/etc/hadoop
     </property>
 </configuration>
 ```
-- update  /etc/hadoo/yarn-site.xml :
+- update  /etc/hadoop/yarn-site.xml :
 ```xml
 <configuration>
   <property>
@@ -84,7 +84,7 @@ print (RDD.count())
 spark-submit demo.py
 
 # cluster
-export HADOOP_CONF_DIR=/etc/hadoop 
+export HADOOpP_CONF_DIR=/etc/hadoopp 
 spark-submit \
   --master yarn \
   --deploy-mode cluster \
