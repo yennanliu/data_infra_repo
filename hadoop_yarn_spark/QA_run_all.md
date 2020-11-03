@@ -19,16 +19,6 @@ $ docker images
 # uhopper/hadoop-datanode          2.8.1               68b0d083cd48        2 years ago         550MB
 
 $ docker run -it 211cc8940c9c bash
-Configuring core
- - Setting fs.defaultFS=hdfs://c4f90b1f4b6c:8020
-Configuring hdfs
-Configuring yarn
-Configuring httpfs
-Configuring kms
-Configuring for multihomed network
-No host resolver specified. Using distro default. (Specify HOST_RESOLVER to change)
-root@c4f90b1f4b6c:/opt/spark-2.1.2# 
-
 ```
 2. Install dependency
 ```bash
@@ -43,6 +33,16 @@ apt-get install python -y
 ```bash
 export HADOOP_HOME=/etc/hadoop 
 export HADOOP_CONF_DIR=/etc/hadoop 
+```
+- update /etc/hosts :
+```
+# (192.168.1.100 is your server ip, if local, setup localhost instead)
+192.168.1.100 namenode
+192.168.1.100 resourcemanager
+192.168.1.100 nodemanager
+192.168.1.100 datanode1
+192.168.1.100 datanode2
+192.168.1.100 datanode3
 ```
 - update /etc/hadoo/core-site.xml :
 ```xml

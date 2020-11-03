@@ -17,16 +17,6 @@ $ docker images
 # uhopper/hadoop      2.8.1               5cc87c178140        2 years ago          551MB
 
 $ docker run -it 952f01c54807 bash
-Configuring core
- - Setting fs.defaultFS=hdfs://c4f90b1f4b6c:8020
-Configuring hdfs
-Configuring yarn
-Configuring httpfs
-Configuring kms
-Configuring for multihomed network
-No host resolver specified. Using distro default. (Specify HOST_RESOLVER to change)
-root@c4f90b1f4b6c:/opt/spark-2.1.2# 
-
 ```
 2. Install dependency
 ```bash
