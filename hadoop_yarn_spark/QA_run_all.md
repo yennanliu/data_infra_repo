@@ -51,6 +51,10 @@ export HADOOpP_CONF_DIR=/etc/hadoopp
         <name>fs.defaultFS</name>
         <value>hdfs://namenode:8020</value>
     </property>
+    <property>
+    <name>yarn.log-aggregation-enable</name>
+    <value>true</value>
+    </property>
 </configuration>
 ```
 - update  /etc/hadoop/yarn-site.xml :
