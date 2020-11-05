@@ -1,0 +1,103 @@
+version: '2'
+services:
+  namenode:
+    image: uhopper/hadoop-namenode:2.8.1
+    # 配置好 docker 内的假域名
+    hostname: namenode
+    container_name: namenode
+    networks:
+      - hadoop
+    volumes:
+      - /namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=datanode1
+      # 配置 hdfs 用户权限问题,不需要只允许 hadoop 用户访问
+      - HDFS_CONF_dfs_permissions=false
+    ports:
+      # 接收Client连接的RPC端口，用于获取文件系统metadata信息
+      - 8020:8020
+      # nameNode http服务的端口
+      - 50070:50070
+      # nameNode https 服务的端口
+      - 50470:50470
+  datanode1:
+    image: uhopper/hadoop-datanode:2.8.1
+    hostname: datanode1
+    container_name: datanode1
+    networks:
+      - hadoop
+    volumes:
+      - /datanode1:/hadoop/dfs/data
+    environment:
+      # 等价于在 core-site.xml 中配置 fs.defaultFS
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      # 等价于在 hdfs-site.xml 中配置 dfs.datanode.address
+      - HDFS_CONF_dfs_datanode_address=0.0.0.0:50010
+      # dfs.datanode.ipc.address 不使用默认端口的意义是在同一机器起多个 datanode，暴露端口需要不同
+      - HDFS_CONF_dfs_datanode_ipc_address=0.0.0.0:50020
+      # dfs.datanode.http.address
+      - HDFS_CONF_dfs_datanode_http_address=0.0.0.0:50075
+      - YARN_CONF_yarn_nodemanager_pmem___check___enabled=false
+      - YARN_CONF_yarn_nodemanager_vmem___check___enabled=false
+      - YARN_CONF_yarn_nodemanager_vmem___pmem___ratio=2.5
+      - YARN_CONF_yarn_nodemanager_resource_memory___mb=4096
+      - YARN_CONF_yarn_scheduler_maximum___allocation___mb=4096
+      - YARN_CONF_yarn_scheduler_minimum___allocation___mb=256
+    ports:
+      - 50010:50010
+      - 50020:50020
+      - 50075:50075
+  resourcemanager:
+    image: uhopper/hadoop-resourcemanager:2.8.1
+    hostname: resourcemanager
+    container_name: resourcemanager
+    networks:
+      - hadoop
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_log___aggregation___enable=true
+      - YARN_CONF_yarn_nodemanager_pmem___check___enabled=false
+      - YARN_CONF_yarn_nodemanager_vmem___check___enabled=false
+      - YARN_CONF_yarn_nodemanager_vmem___pmem___ratio=2.5
+      - YARN_CONF_yarn_nodemanager_resource_memory___mb=4096
+      - YARN_CONF_yarn_scheduler_maximum___allocation___mb=4096
+      - YARN_CONF_yarn_scheduler_minimum___allocation___mb=256
+    ports:
+      - 8030:8030
+      - 8031:8031
+      - 8032:8032
+      - 8033:8033
+      - 8088:8088
+  nodemanager:
+    image: uhopper/hadoop-nodemanager:2.8.1
+    hostname: nodemanager
+    container_name: nodemanager
+    networks:
+      - hadoop
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+      - YARN_CONF_yarn_log___aggregation___enable=true
+      - YARN_CONF_yarn_nodemanager_remote___app___log___dir=/app-logs
+      - YARN_CONF_yarn_nodemanager_pmem___check___enabled=false
+      - YARN_CONF_yarn_nodemanager_vmem___check___enabled=false
+      - YARN_CONF_yarn_nodemanager_vmem___pmem___ratio=2.5
+      - YARN_CONF_yarn_nodemanager_resource_memory___mb=4096
+      - YARN_CONF_yarn_scheduler_maximum___allocation___mb=4096
+      - YARN_CONF_yarn_scheduler_minimum___allocation___mb=256
+    ports:
+      - 8040:8040
+      - 8041:8041
+      - 8042:8042
+  spark:
+    image: uhopper/hadoop-spark:2.1.2_2.8.1
+    hostname: spark
+    container_name: spark
+    networks:
+      - hadoop
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+    command: tail -f /var/log/dmesg
+networks:
+  hadoop:

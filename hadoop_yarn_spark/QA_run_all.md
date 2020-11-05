@@ -88,10 +88,10 @@ print (RDD.count())
 spark-submit demo.py
 
 # cluster
-export HADOOpP_CONF_DIR=/etc/hadoopp 
+export HADOOP_CONF_DIR=/etc/hadoop 
 spark-submit \
   --master yarn \
-  --deploy-mode cluster \
+  --deploy-mode client \
   --conf spark.eventLog.dir=hdfs://nodemanager/mode/containerlogs \
   demo.py
 ```
