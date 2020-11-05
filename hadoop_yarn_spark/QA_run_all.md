@@ -4,7 +4,7 @@
 1. Pull the code
 ```bash
 git clone https://github.com/yennanliu/data_infra_repo.git
-cd data_infra_repo/hadoopp_yarn_spark
+cd data_infra_repo/hadoop_yarn_spark
 docker-compose up -d
 ```
 
