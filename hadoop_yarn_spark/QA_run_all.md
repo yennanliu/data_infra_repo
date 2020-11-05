@@ -95,3 +95,9 @@ spark-submit \
   --conf spark.eventLog.dir=hdfs://nodemanager/mode/containerlogs \
   demo.py
 ```
+
+6. check the HDFS 
+```
+hdfs dfs -mkdir /test
+hdfs dfs -ls /
+```
