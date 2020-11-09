@@ -42,6 +42,13 @@ services:
       - HDFS_CONF_dfs_datanode_ipc_address=0.0.0.0:50020
       # dfs.datanode.http.address
       - HDFS_CONF_dfs_datanode_http_address=0.0.0.0:50075
+      # set up memory for yarn
+      - YARN_CONF_yarn_nodemanager_pmem___check___enabled=false
+      - YARN_CONF_yarn_nodemanager_vmem___check___enabled=false
+      - YARN_CONF_yarn_nodemanager_vmem___pmem___ratio=2.5
+      - YARN_CONF_yarn_nodemanager_resource_memory___mb=4096
+      - YARN_CONF_yarn_scheduler_maximum___allocation___mb=4096
+      - YARN_CONF_yarn_scheduler_minimum___allocation___mb=256
     ports:
       - 50010:50010
       - 50020:50020
@@ -93,6 +100,13 @@ services:
     environment:
       - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
       - YARN_CONF_yarn_log___aggregation___enable=true
+      # set up memory for resourcemanager
+      - YARN_CONF_yarn_nodemanager_pmem___check___enabled=false
+      - YARN_CONF_yarn_nodemanager_vmem___check___enabled=false
+      - YARN_CONF_yarn_nodemanager_vmem___pmem___ratio=2.5
+      - YARN_CONF_yarn_nodemanager_resource_memory___mb=4096
+      - YARN_CONF_yarn_scheduler_maximum___allocation___mb=4096
+      - YARN_CONF_yarn_scheduler_minimum___allocation___mb=256
     ports:
       - 8030:8030
       - 8031:8031
@@ -111,6 +125,13 @@ services:
       - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
       - YARN_CONF_yarn_log___aggregation___enable=true
       - YARN_CONF_yarn_nodemanager_remote___app___log___dir=/app-logs
+      # set up memory for nodemanager
+      - YARN_CONF_yarn_nodemanager_pmem___check___enabled=false
+      - YARN_CONF_yarn_nodemanager_vmem___check___enabled=false
+      - YARN_CONF_yarn_nodemanager_vmem___pmem___ratio=2.5
+      - YARN_CONF_yarn_nodemanager_resource_memory___mb=4096
+      - YARN_CONF_yarn_scheduler_maximum___allocation___mb=4096
+      - YARN_CONF_yarn_scheduler_minimum___allocation___mb=256
     ports:
       - 8040:8040
       - 8041:8041
@@ -126,7 +147,5 @@ services:
       - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
       - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
     command: tail -f /var/log/dmesg
-
-
 networks:
   hadoop:
