@@ -1,0 +1,6 @@
+.idea/
+#airflow_files/
+logs/
+database/
+airflow_files/.DS_Store
+airflow_files/dags/__pycache__/

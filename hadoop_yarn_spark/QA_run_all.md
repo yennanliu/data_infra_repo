@@ -23,8 +23,7 @@ $ docker run -it 211cc8940c9c bash
 2. Install dependency
 ```bash
 apt-get update
-apt-get install nano vim -y
-apt-get install python -y
+apt-get install nano vim -y && apt-get install python -y
 ```
 
 3. Set up Hadoopp config
@@ -64,7 +63,31 @@ export HADOOpP_CONF_DIR=/etc/hadoopp
     <name>yarn.resourcemanager.hostname</name>
     <value>resourcemanager</value>
   </property>
+  <property>
+ <name>yarn.log-aggregation-enable</name>
+ <value>true</value>
+ </property>
+  <property>
+    <name>yarn.log.server.url</name>
+    <value>http://master:19888/jobhistory/logs</value>
+  </property>
 </configuration>
+```
+- update /etc/hadoop/mapred-site.xml:
+```xml
+<property>
+  <name>mapreduce.jobhistory.address</name>
+  <value>master:10020</value>
+</property>
+
+<property>
+  <name>mapreduce.jobhistory.webapp.address</name>
+  <value>master:19888</value>
+</property>
+```
+- run the history server
+```
+/opt/hadoop-2.8.1/sbin/mr-jobhistory-daemon.sh start historyserver
 ```
 
 4. Save below code as `demo.py`
@@ -91,9 +114,13 @@ spark-submit demo.py
 export HADOOP_CONF_DIR=/etc/hadoop 
 spark-submit \
   --master yarn \
-  --deploy-mode client \
-  --conf spark.eventLog.dir=hdfs://nodemanager/mode/containerlogs \
+  --deploy-mode cluster \
+  --conf spark.eventLog.enabled=true \
+  --conf spark.eventLog.dir=hdfs://resourcemanager:8088/tmp/logs/root/logs/ \
   demo.py
+
+# check logs 
+yarn logs -applicationId <applicationId>
 ```
 
 6. check the HDFS 
