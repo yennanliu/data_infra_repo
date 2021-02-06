@@ -2,7 +2,7 @@
 
 function install_py_packages(){
 
-containers_id="`docker ps -a | grep airflow_jpw_worker_1 | awk '{print $1}'`"
+containers_id="`docker ps -a | grep airflow_in_docker_compose_worker_1 | awk '{print $1}'`"
 echo $containers_id
 
 echo 'Install gcc, python-dev ...'
