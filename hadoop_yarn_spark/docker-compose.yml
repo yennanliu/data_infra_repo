@@ -10,7 +10,7 @@ services:
       - hadoop
     volumes:
       # plz change the zone name mapping here
-      - /namenode:/hadoop/dfs/name
+      - /tmp/namenode:/hadoop/dfs/name
     environment:
       - CLUSTER_NAME=datanode1
       - CLUSTER_NAME=datanode2
@@ -32,7 +32,7 @@ services:
     networks:
       - hadoop
     volumes:
-      - /datanode1:/hadoop/dfs/data
+      - /tmp/datanode1:/hadoop/dfs/data
     environment:
       # same as set up fs.defaultFS in core-site.xml
       - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
@@ -61,7 +61,7 @@ services:
     networks:
       - hadoop
     volumes:
-      - /datanode2:/hadoop/dfs/data
+      - /tmp/datanode2:/hadoop/dfs/data
     environment:
       - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
       - HDFS_CONF_dfs_datanode_address=0.0.0.0:50012
@@ -79,7 +79,7 @@ services:
     networks:
       - hadoop
     volumes:
-      - /datanode3:/hadoop/dfs/data
+      - /tmp/datanode3:/hadoop/dfs/data
     environment:
       - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
       - HDFS_CONF_dfs_datanode_address=0.0.0.0:50013
