@@ -15,6 +15,29 @@ docker-compose down
 - Data node : localhost:50070
 - Yarn : localhost:8088
 
+### Run Spark job
+```bash
+# 1
+spark-submit \
+    --class org.apache.spark.examples.SparkPi \
+    --master yarn \
+    --deploy-mode cluster \
+    --driver-memory 512m \
+    --executor-memory 512m \
+    --executor-cores 1 \
+    /opt/spark-2.1.2/examples/jars/spark-examples_2.11-2.1.2.jar \
+    10
+
+# 2
+spark-submit \
+    --class org.apache.spark.examples.SparkPi \
+    --master yarn \
+    --deploy-mode cluster \
+    --supervise \
+    /opt/spark-2.1.2/examples/jars/spark-examples_2.11-2.1.2.jar \
+    1000
+```
+
 ### Install dependency
 ```bash
 apt-get update
@@ -62,9 +85,9 @@ spark-submit \
 
 ### Ref
 - Hadoop-spark-yarn docker
-	- https://www.jianshu.com/p/3ca4c759d3d8
-	- https://hub.docker.com/u/uhopper
-	- https://github.com/infotechsoft/uhopper-hadoop-docker
-	- https://yanwei-liu.medium.com/hadoop-spark%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-%E4%B8%80-%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A-%E5%AE%89%E8%A3%9Dscala-4bd2b5ef7e66
+    - https://www.jianshu.com/p/3ca4c759d3d8
+    - https://hub.docker.com/u/uhopper
+    - https://github.com/infotechsoft/uhopper-hadoop-docker
+    - https://yanwei-liu.medium.com/hadoop-spark%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-%E4%B8%80-%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A-%E5%AE%89%E8%A3%9Dscala-4bd2b5ef7e66
 - HDFS command ref
-	- https://stackoverflow.com/questions/28241251/hadoop-fs-ls-results-in-no-such-file-or-directory
+    - https://stackoverflow.com/questions/28241251/hadoop-fs-ls-results-in-no-such-file-or-directory
