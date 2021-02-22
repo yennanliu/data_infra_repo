@@ -81,6 +81,21 @@ spark-submit \
   --deploy-mode cluster \
   --conf spark.eventLog.dir=hdfs://nodemanager/mode/containerlogs \
   demo.py
+
+# spark-submit --class org.apache.spark.examples.SparkPi --master yarn --deploy-mode client --num-executors 3 --driver-memory 512m --executor-memory 512m --executor-cores 1 ${SPARK_HOME}/examples/jars/spark-examples_*.jar 10
+```
+
+### Run hadoop jobs
+```bash
+
+hadoop jar /opt/hadoop-2.8.1/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.1.jar pi 5 5 
+
+```
+
+### Test Yarn
+```bash
+yarn application -status <application_id>
+yarn logs -applicationId <application_id>
 ```
 
 ### Ref
