@@ -12,26 +12,26 @@
 ```bash
 # main projects
 ├── airflow_in_docker_compose
-├── archived
 ├── celery_redis_flower_infra
 ├── deploy_dockerhub.sh
 ├── hadoop_yarn_spark
 ├── kafka-zookeeper
 ├── kafka_zookeeper_redis_infra
-├── kill_clean_docker_image_instance.sh
 ├── mysql-master-slave
 ```
 
 ### TODO
 - Hadoop
 	- hadoop_yarn_spark (batch)
+	- hadoop_yarn_spark (stream)
 	- hadoop namenode, datanode
+	- hadoop_yarn_flink
 - Kafka
 	- Kafka producer, consumer, zk
 	- Kafka mirror
 	- Kafka-ELK-DB
 - airflow
-	- airflow_in_docker_compose
+	- airflow app in docker compose
 - DB
 	- DB sharding (partition)
 	- DB replica
