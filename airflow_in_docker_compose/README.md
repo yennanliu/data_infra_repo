@@ -37,6 +37,16 @@ bash files/script/install_packages.sh
 ```bash
 bash files/script/init_airflow.sh 
 ```
+
+### Copy Dags
+```bash
+# inside airflow worker docker instance
+cp /home/<user_name>/airflow/dags/*.py /opt/airflow/dags/
+
+# and plz re-run the scheduler (in case there is no DAG shown in UI)
+airflow scheduler
+```
+
 ### End points
 - Airflow : http://localhost:9999
 - Celery : http://localhost:6666
