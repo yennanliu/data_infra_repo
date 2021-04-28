@@ -11,9 +11,11 @@ docker-compose up -d
 # down the service 
 docker-compose down
 ```
-- Name node : localhost:8020
-- Data node : localhost:50070
-- Yarn : localhost:8088
+- Namenode :  [localhost:50070](localhost:50070)
+- Datanode1 : [localhost:50075](localhost:50075)
+- Datanode2 : [localhost:50072](localhost:50072)
+- Datanode3 : [localhost:50073](localhost:50073)
+- Yarn : [localhost:8088](localhost:8088)
 
 ### Run Spark job
 ```bash
