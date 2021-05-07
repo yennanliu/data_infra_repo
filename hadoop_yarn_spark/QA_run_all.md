@@ -100,9 +100,11 @@ conf = SparkConf().setAppName("spark demo job")
 sc = SparkContext(conf=conf).getOrCreate()
 data = [1,2,3,4]
 RDD = sc.parallelize(data)
+print ("*"*30)
 print (data)
 print (RDD.collect())
 print (RDD.count())
+print ("*"*30)
 ```
 
 5. Run spark job
